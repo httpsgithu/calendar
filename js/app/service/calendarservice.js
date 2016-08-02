@@ -470,12 +470,12 @@ app.service('CalendarService', ['DavClient', 'Calendar', function(DavClient, Cal
 				vtodo: false
 			},
 			owner: null,
-			shareable: props.canWrite,
+			shareable: publicMode ? false : props.canWrite,
 			shares: {
 				users: [],
 				groups: []
 			},
-			writable: props.canWrite
+			writable: publicMode ? false : props.canWrite
 		};
 
 		if ('{' + DavClient.NS_CALENDARSERVER + '}publish-url' in props) {
