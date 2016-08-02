@@ -27,6 +27,7 @@
 	data-appVersion="<?php p($_['appVersion']); ?>"
 	data-defaultView="<?php p($_['defaultView']); ?>"
 	data-emailAddress="<?php p($_['emailAddress']); ?>"
+	data-isPublic="<?php p($_['isPublic'] ? '1' : '0'); ?>"
 	fc
 	id="fullcalendar">
 </div>
