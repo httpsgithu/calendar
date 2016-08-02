@@ -558,6 +558,10 @@ app.service('CalendarService', ['DavClient', 'Calendar', function(DavClient, Cal
 			simple.enabled = (props['{' + DavClient.NS_OWNCLOUD + '}calendar-enabled'] === '1');
 		}
 
+		if (publicMode) {
+			simple.enabled = true;
+		}
+
 		if (typeof simple.color !== 'undefined') {
 			if (simple.color.length === 9) {
 				simple.color = simple.color.substr(0,7);
