@@ -150,8 +150,8 @@ app.service('CalendarService', ['DavClient', 'Calendar', function(DavClient, Cal
 		});
 	};
 
-	this.getPubUrl = function(url) {
-		url = OC.linkToRemoteBase('dav') + '/public-calendars/' + url;
+	this.getPubUrl = function(token) {
+		const url = OC.linkToRemoteBase('dav') + '/public-calendars/' + token;
 		return DavClient.propFind(DavClient.buildUrl(url), this._PROPERTIES, 0, {'requesttoken': OC.requestToken}).then(function(response) {
 			var body = response.body;
 			if (body.propStat.length < 1) {
