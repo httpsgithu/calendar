@@ -29,7 +29,8 @@ app.factory('CalendarListItem', function(Calendar) {
 			calendar: calendar,
 			isEditingShares: false,
 			isEditingProperties: false,
-			isDisplayingCalDAVUrl: false
+			isDisplayingCalDAVUrl: false,
+			isSendingMail: false
 		};
 		const iface = {
 			_isACalendarListItemObject: true
@@ -63,8 +64,16 @@ app.factory('CalendarListItem', function(Calendar) {
 			return context.isEditingShares;
 		};
 
+		iface.isSendingMail = function() {
+			return context.isSendingMail;
+		};
+
 		iface.toggleEditingShares = function() {
 			context.isEditingShares = !context.isEditingShares;
+		};
+
+		iface.toggleSendingMail = function() {
+			context.isSendingMail = !context.isSendingMail;
 		};
 
 		iface.isEditing = function() {
