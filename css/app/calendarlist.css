@@ -86,16 +86,6 @@
 	background: #1a1a1a;
 }
 
-.add-new-subscription .calendarlist-fieldset input {
-	width: 130px;
-	margin-right: 2px;
-
-}
-
-.add-new-subscription .calendarlist-fieldset select {
-	width: 80px;
-}
-
 #app-navigation .app-navigation-list-item .calendarCheckbox {
 	position: absolute;
 	margin-left: 17px;
