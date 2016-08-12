@@ -41,6 +41,7 @@ app.service('CalendarService', ['DavClient', 'Calendar', function(DavClient, Cal
 		'{' + DavClient.NS_IETF + '}supported-calendar-component-set',
 		'{' + DavClient.NS_CALENDARSERVER + '}publish-url',
 		'{' + DavClient.NS_CALENDARSERVER + '}pre-publish-url',
+		'{' + DavClient.NS_CALENDARSERVER + '}can-be-published',
 		'{' + DavClient.NS_OWNCLOUD + '}calendar-enabled',
 		'{' + DavClient.NS_DAV + '}acl',
 		'{' + DavClient.NS_DAV + '}owner',
@@ -485,7 +486,6 @@ app.service('CalendarService', ['DavClient', 'Calendar', function(DavClient, Cal
 
 		if ('{' + DavClient.NS_CALENDARSERVER + '}pre-publish-url' in props) {
 			simple.prepublishurl = props['{' + DavClient.NS_CALENDARSERVER + '}pre-publish-url'];
-			simple.publishable = true;
 
 			var publicpath = 'public/';
 			if (!window.location.toString().endsWith('/')) {
@@ -497,6 +497,8 @@ app.service('CalendarService', ['DavClient', 'Calendar', function(DavClient, Cal
 				simple.publicurl = window.location.toString() + publicpath + simple.prepublishurl.substr(simple.prepublishurl.lastIndexOf('/') + 1);
 			}
 		}
+
+		simple.publishable = '{' + DavClient.NS_CALENDARSERVER + '}can-be-published' in props;
 
 		var components = props['{' + DavClient.NS_IETF + '}supported-calendar-component-set'];
 		for (var i=0; i < components.length; i++) {
