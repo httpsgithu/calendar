@@ -91,7 +91,7 @@ app.controller('CalendarListController', ['$scope', '$rootScope', '$window', 'Ha
 				let name = splittedICal.name || url;
 
 				if (name.length > 100) {
-					name = name.substr(0, 100);
+					name = name.slice(0, 100);
 				}
 
 				CalendarService.createWebCal(name, color, url)
@@ -145,7 +145,7 @@ app.controller('CalendarListController', ['$scope', '$rootScope', '$window', 'Ha
 
 		$scope.sendMail = function (item) {
 			item.toggleSendingMail();
-			MailerService.sendMail(item.email, item.publicSharingURL, item.calendar.displayname).then(function (response) {
+			MailerService.sendMail(item.email, item.calendar.publicToken, item.calendar.displayname).then(function (response) {
 				if (response.status === 200) {
 					item.email = '';
 					OC.Notification.showTemporary(t('calendar', 'Email has been sent.'));
